@@ -1,0 +1,11 @@
+/bin
+/target
+/springonly.*
+/.settings
+/.project
+/.classpath
+/logfile.log
+/logfile*
+.externalToolBuilders
+mockserver.log
+mockserver_request.log
