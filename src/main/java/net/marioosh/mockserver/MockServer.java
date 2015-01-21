@@ -44,7 +44,9 @@ public class MockServer {
 		 * /image/1
 		 */
 		s.when(request().withMethod("GET").withPath("/images/1"))
-		.respond(response().withHeader(header("Content-Type", "image/png")).withBody(new BinaryBody(imageBytes.toByteArray())));
+		.respond(response()
+				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
+				.withBody(new BinaryBody(imageBytes.toByteArray())));
 		
 		/**
 		 * /users/1/banners?expand=image
