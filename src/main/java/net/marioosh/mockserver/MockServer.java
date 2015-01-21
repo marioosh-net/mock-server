@@ -9,6 +9,7 @@ import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.model.BinaryBody;
+import org.mockserver.model.Parameter;
 
 public class MockServer {
 
@@ -18,6 +19,7 @@ public class MockServer {
 		 * json
 		 */
 		InputStream categories = MockServer.class.getClassLoader().getResourceAsStream("categories.json");
+		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
 		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
 		IOUtils.copy(image, imageBytes);
@@ -26,23 +28,30 @@ public class MockServer {
 		MockServerClient s = new MockServerClient("localhost", port).dumpToLog();
 		
 		/**
-		 * root
+		 * /
 		 */
 		s.when(request().withMethod("GET").withPath("/"))
 		.respond(response().withStatusCode(200).withBody("Hello World"));
 
 		/**
-		 * categories
+		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(categories)));
 		
 		/**
-		 * image
+		 * /image/1
 		 */
-		s.when(request().withMethod("GET").withPath("/image"))
+		s.when(request().withMethod("GET").withPath("/images/1"))
 		.respond(response().withHeader(header("Content-Type", "image/png")).withBody(new BinaryBody(imageBytes.toByteArray())));
+		
+		/**
+		 * /users/1/banners?expand=image
+		 */
+		s.when(request().withMethod("GET").withPath("/users/1/banners").withQueryStringParameter(new Parameter("expand", "image")))
+		.respond(response().withHeader(header("Content-type", "application/json"))
+		.withBody(Utils.inputStreamtoString(banners)));
 	}
 	
 	/**
