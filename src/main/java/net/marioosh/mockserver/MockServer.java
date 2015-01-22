@@ -37,14 +37,13 @@ public class MockServer {
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
-		.respond(response()
-		.withHeaders(header("Content-Type", "application/json"), header("Cache-Control", "max-age=10"))
+		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(categories)));
 		
 		/**
 		 * /image/1
 		 */
-		s.when(request().withMethod("GET").withPath("/images/1"))
+		s.when(request().withMethod("GET").withPath("/images/\\d+"))
 		.respond(response()
 				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
 				.withBody(new BinaryBody(imageBytes.toByteArray())));
@@ -52,7 +51,7 @@ public class MockServer {
 		/**
 		 * /users/1/banners?expand=image
 		 */
-		s.when(request().withMethod("GET").withPath("/users/1/banners").withQueryStringParameter(new Parameter("expand", "image")))
+		s.when(request().withMethod("GET").withPath("/users/\\d+/banners").withQueryStringParameter(new Parameter("expand", "image")))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(banners)));
 	}
