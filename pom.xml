@@ -5,44 +5,40 @@
 	<artifactId>mock-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
-		<!-- mockserver -->
 		<dependency>
 			<groupId>org.mock-server</groupId>
 			<artifactId>mockserver-netty</artifactId>
 			<version>3.9.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.squareup.okhttp</groupId>
 			<artifactId>mockwebserver</artifactId>
 			<version>2.2.0</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<archive>
-						<manifest>
-							<mainClass>net.marioosh.mockserver.MockServer</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase> <!-- bind to the packaging phase -->
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>net.marioosh.mockserver.MockServer</mainClass>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
 	</build>
 </project>

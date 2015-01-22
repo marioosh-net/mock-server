@@ -37,7 +37,8 @@ public class MockServer {
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response()
+		.withHeaders(header("Content-Type", "application/json"), header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(categories)));
 		
 		/**
