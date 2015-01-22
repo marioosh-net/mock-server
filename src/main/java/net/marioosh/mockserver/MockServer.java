@@ -19,6 +19,7 @@ public class MockServer {
 		 * json
 		 */
 		InputStream categories = MockServer.class.getClassLoader().getResourceAsStream("categories.json");
+		InputStream subcategories = MockServer.class.getClassLoader().getResourceAsStream("subcategories.json");
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
 		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
@@ -39,6 +40,13 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/categories"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(categories)));
+
+		/**
+		 * /categories/{id}/subcategories
+		 */
+		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
+		.respond(response().withHeader(header("Content-type", "application/json"))
+		.withBody(Utils.inputStreamtoString(subcategories)));
 		
 		/**
 		 * /image/1

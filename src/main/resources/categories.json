@@ -1,38 +1,47 @@
 [
 	{
 	  "id": 1, 
-	  "name": "Kategoria 1"
+	  "name": "Kategoria 1",
+	  "hasSubcategories": false
 	},
 	{
 	  "id": 2, 
-	  "name": "Kategoria 2"
+	  "name": "Kategoria 2",
+	  "hasSubcategories": true
 	},
 	{
 	  "id": 3, 
-	  "name": "Kategoria 3"
+	  "name": "Kategoria 3",
+	  "hasSubcategories": true
 	},
 	{
 	  "id": 4, 
-	  "name": "Kategoria 4"
+	  "name": "Kategoria 4",
+	  "hasSubcategories": true
 	},
 	{
 	  "id": 5, 
-	  "name": "Kategoria 5"
+	  "name": "Kategoria 5",
+	  "hasSubcategories": true
 	},
 	{
 	  "id": 6, 
-	  "name": "Kategoria 6"
+	  "name": "Kategoria 6",
+	  "hasSubcategories": true
 	},
 	{
 	  "id": 7, 
-	  "name": "Kategoria 7"
+	  "name": "Kategoria 7",
+	  "hasSubcategories": false
 	},
 	{
 	  "id": 8, 
-	  "name": "Kategoria 8"
+	  "name": "Kategoria 8",
+	  "hasSubcategories": false
 	},
 	{
 	  "id": 9, 
-	  "name": "Kategoria 9"
+	  "name": "Kategoria 9",
+	  "hasSubcategories": true
 	}                    
 ]
