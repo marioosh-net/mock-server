@@ -10,14 +10,42 @@
 	  "id": 2, 
 	  "text": "Banner 2",
 	  "image": {
-		  "id":"1"
+		  "id":"2"
 	  }
 	},
 	{
 	  "id": 3, 
 	  "text": "Banner 3",
 	  "image": {
-		  "id":"1"
+		  "id":"3"
 	  }
-	}                    
+	},
+	{
+	  "id": 4, 
+	  "text": "Banner 4",
+	  "image": {
+		  "id":"4"
+	  }
+	},
+	{
+	  "id": 5, 
+	  "text": "Banner 5",
+	  "image": {
+		  "id":"5"
+	  }
+	},
+	{
+	  "id": 6, 
+	  "text": "Banner 6",
+	  "image": {
+		  "id":"6"
+	  }
+	},
+	{
+	  "id": 7, 
+	  "text": "Banner 7",
+	  "image": {
+		  "id":"7"
+	  }
+	}
 ]

@@ -19,6 +19,7 @@ public class MockServer {
 		 * json
 		 */
 		InputStream categories = MockServer.class.getClassLoader().getResourceAsStream("categories.json");
+		InputStream subcategories = MockServer.class.getClassLoader().getResourceAsStream("subcategories.json");
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
@@ -40,6 +41,13 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/categories"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(categories)));
+
+		/**
+		 * /categories/{id}/subcategories
+		 */
+		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
+		.respond(response().withHeader(header("Content-type", "application/json"))
+		.withBody(Utils.inputStreamtoString(subcategories)));
 		
 		/**
 		 * /products
@@ -51,7 +59,7 @@ public class MockServer {
 		/**
 		 * /image/1
 		 */
-		s.when(request().withMethod("GET").withPath("/images/1"))
+		s.when(request().withMethod("GET").withPath("/images/\\d+"))
 		.respond(response()
 				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
 				.withBody(new BinaryBody(imageBytes.toByteArray())));
@@ -59,7 +67,7 @@ public class MockServer {
 		/**
 		 * /users/1/banners?expand=image
 		 */
-		s.when(request().withMethod("GET").withPath("/users/1/banners").withQueryStringParameter(new Parameter("expand", "image")))
+		s.when(request().withMethod("GET").withPath("/users/\\d+/banners").withQueryStringParameter(new Parameter("expand", "image")))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(banners)));
 	}
