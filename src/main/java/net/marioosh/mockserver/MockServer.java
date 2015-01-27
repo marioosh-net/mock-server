@@ -35,7 +35,7 @@ public class MockServer {
 		 * /
 		 */
 		s.when(request().withMethod("GET").withPath("/"))
-		.respond(response().withStatusCode(200).withBody("Hello World"));
+		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
 
 		/**
 		 * /categories
@@ -59,7 +59,7 @@ public class MockServer {
 		.withBody(Utils.inputStreamtoString(products)));		
 
 		/**
-		 * /products
+		 * /products/{id}
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
