@@ -49,28 +49,28 @@ public class MockServer {
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(categories)));
 
 		/**
 		 * /categories/{id}/subcategories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(subcategories)));
 		
 		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(products)));		
 
 		/**
 		 * /products/{id}
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(product)));		
 		
 		/**
