@@ -22,6 +22,8 @@ public class MockServer {
 		InputStream subcategories = MockServer.class.getClassLoader().getResourceAsStream("subcategories.json");
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
+		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
+		
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
 		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
 		IOUtils.copy(image, imageBytes);
@@ -55,6 +57,13 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/products"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(products)));		
+
+		/**
+		 * /products
+		 */
+		s.when(request().withMethod("GET").withPath("/products/\\d+"))
+		.respond(response().withHeader(header("Content-type", "application/json"))
+		.withBody(Utils.inputStreamtoString(product)));		
 		
 		/**
 		 * /image/1
