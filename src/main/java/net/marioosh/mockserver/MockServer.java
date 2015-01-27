@@ -38,6 +38,14 @@ public class MockServer {
 		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
 
 		/**
+		 * /hello
+		 */
+		s.when(request().withMethod("GET").withPath("/hello"))
+		.respond(response()
+ 		.withHeaders(header("Content-Type", "application/json"), header("Cache-Control", "max-age=10"))
+		.withBody("{\"msg\":\"Cached response, 10s\"}"));
+
+		/**
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
