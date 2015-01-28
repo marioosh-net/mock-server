@@ -38,6 +38,14 @@ public class MockServer {
 		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
 
 		/**
+		 * /hello1
+		 */
+		s.when(request().withMethod("GET").withPath("/hello1"))
+		.respond(response()
+				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
+				.withBody(new BinaryBody(imageBytes.toByteArray())));
+
+		/**
 		 * /hello
 		 */
 		s.when(request().withMethod("GET").withPath("/hello"))
