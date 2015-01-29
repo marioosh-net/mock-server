@@ -39,38 +39,54 @@ public class MockServer {
 		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
 
 		/**
+		 * /hello1
+		 */
+		s.when(request().withMethod("GET").withPath("/hello1"))
+		.respond(response()
+				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
+				.withBody(new BinaryBody(imageBytes.toByteArray())));
+
+		/**
+		 * /hello
+		 */
+		s.when(request().withMethod("GET").withPath("/hello"))
+		.respond(response()
+ 		.withHeaders(header("Content-Type", "application/json"), header("Cache-Control", "max-age=10"))
+		.withBody("{\"msg\":\"Cached response, 10s\"}"));
+
+		/**
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(categories)));
 
 		/**
 		 * /categories/{id}/subcategories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(subcategories)));
 		
 		/**
 		 * /products?ean=...
 		 */
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(productJson));				
 		
 		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
-		.withBody(Utils.inputStreamtoString(products)));
-		
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(Utils.inputStreamtoString(products)));		
+
 		/**
 		 * /products/{id}
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
-		.respond(response().withHeader(header("Content-type", "application/json"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(productJson));		
 		
 		/**
