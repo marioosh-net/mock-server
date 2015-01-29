@@ -23,6 +23,7 @@ public class MockServer {
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
+		String productJson = Utils.inputStreamtoString(product);		
 		
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
 		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
@@ -52,18 +53,25 @@ public class MockServer {
 		.withBody(Utils.inputStreamtoString(subcategories)));
 		
 		/**
+		 * /products?ean=...
+		 */
+		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
+		.respond(response().withHeader(header("Content-type", "application/json"))
+		.withBody(productJson));				
+		
+		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
-		.withBody(Utils.inputStreamtoString(products)));		
-
+		.withBody(Utils.inputStreamtoString(products)));
+		
 		/**
 		 * /products/{id}
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
 		.respond(response().withHeader(header("Content-type", "application/json"))
-		.withBody(Utils.inputStreamtoString(product)));		
+		.withBody(productJson));		
 		
 		/**
 		 * /image/1
