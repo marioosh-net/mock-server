@@ -23,6 +23,7 @@ public class MockServer {
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
+		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		String productJson = Utils.inputStreamtoString(product);		
 		
 		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
@@ -88,6 +89,13 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(productJson));		
+
+		/**
+		 * login
+		 */
+		s.when(request().withMethod("POST").withPath("/login"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(Utils.inputStreamtoString(user)));		
 		
 		/**
 		 * /image/1

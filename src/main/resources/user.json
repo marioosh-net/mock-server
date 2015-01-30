@@ -1,0 +1,15 @@
+{
+	id: "51",
+	card: "111",
+	name: "Kubuś",
+	surname: "Puchatek",
+	email: "aaa@a.pl",
+	phone: "999999999",
+	credit: "199.99",
+	validity: "2015-12-31",
+	height: "180",
+	neck: "43",
+	chest: "100",
+	waist: "85",
+	foot: "27"
+}
