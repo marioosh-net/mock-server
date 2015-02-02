@@ -26,8 +26,7 @@ public class MockServer {
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		String productJson = Utils.inputStreamtoString(product);		
 		
-		InputStream image = MockServer.class.getClassLoader().getResourceAsStream("image.png");
-		InputStream image2 = MockServer.class.getClassLoader().getResourceAsStream("image2.jpg");
+		InputStream image2 = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
 		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
 		IOUtils.copy(image2, imageBytes);
 		
