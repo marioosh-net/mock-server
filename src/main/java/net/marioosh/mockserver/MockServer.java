@@ -26,9 +26,12 @@ public class MockServer {
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		String productJson = Utils.inputStreamtoString(product);		
 		
-		InputStream image2 = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
-		ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
-		IOUtils.copy(image2, imageBytes);
+		InputStream image2big = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
+		InputStream image2s = MockServer.class.getClassLoader().getResourceAsStream("image2s.jpg");
+		ByteArrayOutputStream imageBytesBig = new ByteArrayOutputStream();
+		IOUtils.copy(image2big, imageBytesBig);
+		ByteArrayOutputStream imageBytesS = new ByteArrayOutputStream();
+		IOUtils.copy(image2s, imageBytesS);
 		
 		new org.mockserver.mockserver.MockServer(port);
 		MockServerClient s = new MockServerClient("localhost", port).dumpToLog();
@@ -45,7 +48,7 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/hello1"))
 		.respond(response()
 				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
-				.withBody(new BinaryBody(imageBytes.toByteArray())));
+				.withBody(new BinaryBody(imageBytesBig.toByteArray())));
 
 		/**
 		 * /hello
@@ -102,8 +105,8 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/images/\\d+"))
 		.respond(response()
-				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=60"))
-				.withBody(new BinaryBody(imageBytes.toByteArray())));
+				.withHeaders(header("Content-Type", "image/jpg"), header("Cache-Control", "max-age=60"))
+				.withBody(new BinaryBody(imageBytesS.toByteArray())));
 		
 		/**
 		 * /users/1/banners?expand=image
