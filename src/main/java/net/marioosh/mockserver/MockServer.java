@@ -24,6 +24,8 @@ public class MockServer {
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
+		InputStream sizes = MockServer.class.getClassLoader().getResourceAsStream("sizes.json");
+		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");
 		String productJson = Utils.inputStreamtoString(product);		
 		
 		InputStream image2big = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
@@ -40,7 +42,7 @@ public class MockServer {
 		 * /
 		 */
 		s.when(request().withMethod("GET").withPath("/"))
-		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
+		.respond(response().withStatusCode(200).withBody("obslugiwane:\n/categories\n/categories/{id}/subcategories\n/categories/{id}/sizes\n/categories/{id}/colours\n/products\n/products/{id}\n/images/{id}\n/users/{id}/banners?expand=image"));
 
 		/**
 		 * /hello1
@@ -71,6 +73,20 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(Utils.inputStreamtoString(subcategories)));
+
+		/**
+		 * /categories/{id}/sizes
+		 */
+		s.when(request().withMethod("GET").withPath("/categories/\\d+/sizes"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(Utils.inputStreamtoString(sizes)));
+
+		/**
+		 * /categories/{id}/colours
+		 */
+		s.when(request().withMethod("GET").withPath("/categories/\\d+/colours"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(Utils.inputStreamtoString(colours)));
 		
 		/**
 		 * /products?ean=...
