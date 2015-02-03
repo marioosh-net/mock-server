@@ -102,7 +102,7 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/images/\\d+"))
 		.respond(response()
-				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=10"))
+				.withHeaders(header("Content-Type", "image/png"), header("Cache-Control", "max-age=60"))
 				.withBody(new BinaryBody(imageBytes.toByteArray())));
 		
 		/**
