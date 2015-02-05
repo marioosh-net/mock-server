@@ -1,0 +1,162 @@
+[
+{
+  "id": 2, 
+  "name": "Produkt 2",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "image":{
+	  "id":"21"
+  }
+},
+{
+	"id": 3, 
+  "name": "Produkt 3",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"31"
+  }
+},
+{
+	  "id": 5, 
+  "name": "Produkt 5",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"51"
+  }
+},
+{
+  "id": 6, 
+  "name": "Produkt 6",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"61"
+  }
+},
+{
+  "id": 15, 
+  "name": "Produkt 15",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"151"
+  }
+},
+{
+	  "id": 16, 
+  "name": "Produkt 16",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"161"
+  }
+},
+{
+  "id": 17, 
+  "name": "Produkt 17",
+  "price1" : 299.99,
+  "price2" : 99.00,
+  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",  
+  "image":{
+	  "id":"171"
+  }
+},
+{
+	  "id": 341, 
+	  "name": "Produkt 341",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"3411"
+	  }
+	},
+	{
+	  "id": 3410, 
+	  "name": "Produkt 3410",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34101"
+	  }
+	},
+	{
+		  "id": 3411, 
+	  "name": "Produkt 3411",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34111"
+	  }
+	},
+	{
+	  "id": 3412, 
+	  "name": "Produkt 3412",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34121"
+	  }
+	},
+	{
+	  "id": 3413, 
+	  "name": "Produkt 3413",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34131"
+	  }
+	},
+	{
+		  "id": 3414, 
+	  "name": "Produkt 3414",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34141"
+	  }
+	},
+	{
+	  "id": 3415, 
+	  "name": "Produkt 3415",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34151"
+	  }
+	},
+	{
+		  "id": 3416, 
+	  "name": "Produkt 3416",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34161"
+	  }
+	},
+	{
+	  "id": 3417, 
+	  "name": "Produkt 3417",
+	  "price1" : 299.99,
+	  "price2" : 99.00,
+	  "colour": "czarny","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",	  
+	  "image":{
+		  "id":"34171"
+	  }
+	}
+]

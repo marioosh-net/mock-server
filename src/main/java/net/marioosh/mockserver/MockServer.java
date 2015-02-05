@@ -22,6 +22,7 @@ public class MockServer {
 		InputStream subcategories = MockServer.class.getClassLoader().getResourceAsStream("subcategories.json");
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
+		InputStream productsF = MockServer.class.getClassLoader().getResourceAsStream("products-filtered.json");
 		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		InputStream sizes = MockServer.class.getClassLoader().getResourceAsStream("sizes.json");
@@ -94,6 +95,13 @@ public class MockServer {
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
 		.withBody(productJson));				
+		
+		/**
+		 * /categories/1/products
+		 */
+		s.when(request().withMethod("GET").withPath("/categories/\\d+/products").withQueryStringParameters(new Parameter("colors", ".*"), new Parameter("sizes", ".*")))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(Utils.inputStreamtoString(productsF)));
 		
 		/**
 		 * /products
