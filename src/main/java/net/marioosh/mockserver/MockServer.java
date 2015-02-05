@@ -24,11 +24,13 @@ public class MockServer {
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream productsF = MockServer.class.getClassLoader().getResourceAsStream("products-filtered.json");
 		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
+		InputStream productsEan = MockServer.class.getClassLoader().getResourceAsStream("products-ean.json");
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		InputStream sizes = MockServer.class.getClassLoader().getResourceAsStream("sizes.json");
 		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");
 		String productJson = Utils.inputStreamtoString(product);		
-		
+		String productsEanJson = Utils.inputStreamtoString(productsEan);		
+	
 		InputStream image2big = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
 		InputStream image2s = MockServer.class.getClassLoader().getResourceAsStream("image2s.jpg");
 		ByteArrayOutputStream imageBytesBig = new ByteArrayOutputStream();
@@ -94,7 +96,7 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(productJson));				
+		.withBody(productsEanJson));				
 		
 		/**
 		 * /categories/1/products
