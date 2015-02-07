@@ -1,9 +1,9 @@
 package net.marioosh.mockserver;
 
 import static org.mockserver.model.Header.header;
+import static org.mockserver.model.HttpCallback.callback;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
-import static org.mockserver.model.HttpCallback.callback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,12 +16,12 @@ import org.apache.commons.io.IOUtils;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.model.BinaryBody;
 import org.mockserver.model.Delay;
-import org.mockserver.model.HttpRequest;
-import org.mockserver.model.HttpResponse;
 import org.mockserver.model.Parameter;
 
 public class MockServer {
 
+	private static final int DELAY = 3;
+	
 	public MockServer(int port) throws IOException {
 		
 		/**
@@ -103,21 +103,21 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(productsEanJson).withDelay(new Delay(TimeUnit.SECONDS, 3)));				
+		.withBody(productsEanJson).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));				
 		
 		/**
 		 * /categories/1/products
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/products").withQueryStringParameters(new Parameter("colors", ".*"), new Parameter("sizes", ".*")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(Utils.inputStreamtoString(productsF)).withDelay(new Delay(TimeUnit.SECONDS, 3)));
+		.withBody(Utils.inputStreamtoString(productsF)).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));
 		
 		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(Utils.inputStreamtoString(products)).withDelay(new Delay(TimeUnit.SECONDS, 3)));		
+		.withBody(Utils.inputStreamtoString(products)).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));		
 
 		/**
 		 * /products/{id}
