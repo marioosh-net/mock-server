@@ -8,12 +8,14 @@ import static org.mockserver.model.HttpCallback.callback;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
 
 import net.marioosh.mockserver.callbacks.ProductCallback;
 
 import org.apache.commons.io.IOUtils;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.model.BinaryBody;
+import org.mockserver.model.Delay;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
 import org.mockserver.model.Parameter;
@@ -101,21 +103,21 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(productsEanJson));				
+		.withBody(productsEanJson).withDelay(new Delay(TimeUnit.SECONDS, 3)));				
 		
 		/**
 		 * /categories/1/products
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/products").withQueryStringParameters(new Parameter("colors", ".*"), new Parameter("sizes", ".*")))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(Utils.inputStreamtoString(productsF)));
+		.withBody(Utils.inputStreamtoString(productsF)).withDelay(new Delay(TimeUnit.SECONDS, 3)));
 		
 		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(Utils.inputStreamtoString(products)));		
+		.withBody(Utils.inputStreamtoString(products)).withDelay(new Delay(TimeUnit.SECONDS, 3)));		
 
 		/**
 		 * /products/{id}
