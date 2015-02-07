@@ -3,12 +3,19 @@ package net.marioosh.mockserver;
 import static org.mockserver.model.Header.header;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
+import static org.mockserver.model.HttpCallback.callback;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import net.marioosh.mockserver.callbacks.ProductCallback;
+
 import org.apache.commons.io.IOUtils;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.model.BinaryBody;
+import org.mockserver.model.HttpRequest;
+import org.mockserver.model.HttpResponse;
 import org.mockserver.model.Parameter;
 
 public class MockServer {
@@ -23,12 +30,10 @@ public class MockServer {
 		InputStream banners = MockServer.class.getClassLoader().getResourceAsStream("banners.json");
 		InputStream products = MockServer.class.getClassLoader().getResourceAsStream("products.json");
 		InputStream productsF = MockServer.class.getClassLoader().getResourceAsStream("products-filtered.json");
-		InputStream product = MockServer.class.getClassLoader().getResourceAsStream("product.json");
 		InputStream productsEan = MockServer.class.getClassLoader().getResourceAsStream("products-ean.json");
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		InputStream sizes = MockServer.class.getClassLoader().getResourceAsStream("sizes.json");
-		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");
-		String productJson = Utils.inputStreamtoString(product);		
+		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");		
 		String productsEanJson = Utils.inputStreamtoString(productsEan);		
 	
 		InputStream image2big = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
@@ -116,8 +121,7 @@ public class MockServer {
 		 * /products/{id}
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(productJson));		
+		.callback(callback().withCallbackClass(ProductCallback.class.getName()));
 
 		/**
 		 * login
