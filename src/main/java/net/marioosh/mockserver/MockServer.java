@@ -35,9 +35,11 @@ public class MockServer {
 		InputStream productsEan = MockServer.class.getClassLoader().getResourceAsStream("products-ean.json");
 		InputStream user = MockServer.class.getClassLoader().getResourceAsStream("user.json");
 		InputStream sizes = MockServer.class.getClassLoader().getResourceAsStream("sizes.json");
-		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");		
-		String productsEanJson = Utils.inputStreamtoString(productsEan);		
-	
+		InputStream colours = MockServer.class.getClassLoader().getResourceAsStream("colours.json");
+		InputStream productImages = MockServer.class.getClassLoader().getResourceAsStream("images.json");
+		String productsEanJson = Utils.inputStreamtoString(productsEan);
+		String productImagesJson = Utils.inputStreamtoString(productImages);		
+		
 		InputStream image2big = MockServer.class.getClassLoader().getResourceAsStream("image2.png");
 		InputStream image2s = MockServer.class.getClassLoader().getResourceAsStream("image2s.jpg");
 		ByteArrayOutputStream imageBytesBig = new ByteArrayOutputStream();
@@ -124,6 +126,13 @@ public class MockServer {
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+"))
 		.callback(callback().withCallbackClass(ProductCallback.class.getName()));
+		
+		/**
+		 * /products/{id}/images
+		 */
+		s.when(request().withMethod("GET").withPath("/products/\\d+/images"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.withBody(productImagesJson).withDelay(new Delay(TimeUnit.MILLISECONDS, 500)));
 
 		/**
 		 * login
