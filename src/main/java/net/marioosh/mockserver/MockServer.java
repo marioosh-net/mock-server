@@ -21,7 +21,7 @@ import org.mockserver.model.Parameter;
 
 public class MockServer {
 
-	private static final int DELAY = 3;
+	private static final int DELAY = 1;
 	
 	public MockServer(int port) throws IOException {
 		
@@ -77,7 +77,7 @@ public class MockServer {
 		 * /categories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=60"))
 		.withBody(Utils.inputStreamtoString(categories)));
 
 		/**
@@ -97,28 +97,28 @@ public class MockServer {
 		 * /categories/{id}/colours
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/colours"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=60"))
 		.withBody(Utils.inputStreamtoString(colours)));
 		
 		/**
 		 * /products?ean=...
 		 */
 		s.when(request().withMethod("GET").withPath("/products").withQueryStringParameter(new Parameter("ean", "\\d+")))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(productsEanJson).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));				
 		
 		/**
 		 * /categories/1/products
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/products").withQueryStringParameters(new Parameter("colors", ".*"), new Parameter("sizes", ".*")))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(Utils.inputStreamtoString(productsF)).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));
 		
 		/**
 		 * /products
 		 */
 		s.when(request().withMethod("GET").withPath("/products"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(Utils.inputStreamtoString(products)).withDelay(new Delay(TimeUnit.SECONDS, DELAY)));		
 
 		/**
@@ -131,14 +131,14 @@ public class MockServer {
 		 * /products/{id}/images
 		 */
 		s.when(request().withMethod("GET").withPath("/products/\\d+/images"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(productImagesJson).withDelay(new Delay(TimeUnit.MILLISECONDS, 500)));
 
 		/**
 		 * login
 		 */
 		s.when(request().withMethod("POST").withPath("/login"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
+		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(Utils.inputStreamtoString(user)));		
 		
 		/**
