@@ -138,9 +138,16 @@ public class MockServer {
 		 * login
 		 */
 		s.when(request().withMethod("POST").withPath("/login"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
+		.respond(response().withHeaders(header("Content-type", "application/json"))
 		.withBody(Utils.inputStreamtoString(user)));		
-		
+
+		/**
+		 * logout
+		 */
+		s.when(request().withMethod("GET").withPath("/logout"))
+		.respond(response().withHeaders(header("Content-type", "application/json"))
+		.withBody("{\"status\":\"ok\"}"));		
+
 		/**
 		 * /image/1
 		 */
