@@ -18,7 +18,9 @@ public class CategoriesCallback implements org.mockserver.mock.action.Expectatio
 		if(req.getPath().endsWith("/20/subcategories")) {
 			return new HttpResponse()
 			.withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-			.withBody(json.replaceAll("true", "false"));			
+			.withBody(json.replaceAll("true", "false")
+					.replaceAll("(\\d+)", "$103")
+					);			
 		} else {
 			return new HttpResponse()
 			.withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
