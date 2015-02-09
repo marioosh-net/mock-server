@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
+import net.marioosh.mockserver.callbacks.CategoriesCallback;
 import net.marioosh.mockserver.callbacks.ProductCallback;
 
 import org.apache.commons.io.IOUtils;
@@ -83,8 +84,7 @@ public class MockServer {
 		 * /categories/{id}/subcategories
 		 */
 		s.when(request().withMethod("GET").withPath("/categories/\\d+/subcategories"))
-		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=10"))
-		.withBody(Utils.inputStreamtoString(subcategories)));
+		.callback(callback().withCallbackClass(CategoriesCallback.class.getName()));
 
 		/**
 		 * /categories/{id}/sizes
