@@ -7,5 +7,5 @@
 /logfile.log
 /logfile*
 .externalToolBuilders
-mockserver.log
+mockserver*.log
 mockserver_request.log
