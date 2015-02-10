@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import net.marioosh.mockserver.callbacks.CategoriesCallback;
 import net.marioosh.mockserver.callbacks.ProductCallback;
+import net.marioosh.mockserver.callbacks.ShopsCallback;
 
 import org.apache.commons.io.IOUtils;
 import org.mockserver.client.server.MockServerClient;
@@ -134,6 +135,12 @@ public class MockServer {
 		.respond(response().withHeaders(header("Content-type", "application/json"),header("Cache-Control", "max-age=30"))
 		.withBody(productImagesJson).withDelay(new Delay(TimeUnit.MILLISECONDS, 500)));
 
+		/**
+		 * /products/{id}/sizes/{id}/shops
+		 */
+		s.when(request().withMethod("GET").withPath("/products/\\d+/sizes/\\d+/shops"))
+		.callback(callback().withCallbackClass(ShopsCallback.class.getName()));		
+		
 		/**
 		 * login
 		 */

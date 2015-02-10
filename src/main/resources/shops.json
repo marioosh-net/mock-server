@@ -1,0 +1,22 @@
+[
+    {
+        "city": "Katowice",
+        "distance": 15.0,
+        "id": 130,
+        "latitude": 50.2136724,
+        "longitude": 19.007192700000001,
+        "name": "Galeria Katowicka",
+        "phone": "111 111 111",
+        "street": "Plac Szewczyka 1"
+    },
+    {
+        "city": "Katowice",
+        "distance": 15.0,
+        "id": 733,
+        "latitude": 50.2136724,
+        "longitude": 19.007192700000001,
+        "name": "Galeria Katowicka",
+        "phone": "111 111 111",
+        "street": "Plac Szewczyka 1"
+    }
+]
